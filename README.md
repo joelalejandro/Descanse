@@ -47,6 +47,7 @@ Descanse::go();
 - All methods within the Service class must contain a *$context* argument, which contains an array with two keys: *request* (contains $_REQUEST data) and *args* (contains all of the slugs in the URL beyond the second slash, i.e. if the route is /userprofile/userdata/1/abc/3f, *args* will contain [0] => 1, [1] => abc, [2] => 3f).
 - All methods must start with *get*, *post*, *put* or *delete*.
 - If you wish to change the default settings of Descanse, you may do so using *Descanse::$settings* before *Descanse::go()*.
+- The 'Accept' header defines the API method's output. If Accept is 'application/json', it'll automatically encode the data. **More encoders are underway!**
 
 ## Settings
 
