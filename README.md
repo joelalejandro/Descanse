@@ -22,8 +22,7 @@ PHP >= 5.3.0
 
 ## A Service Class example
 
-<code><pre>
-<?php
+<code><pre><?php
 // user.php
 class UserService {
   public static function getName($context) {
@@ -35,12 +34,23 @@ class UserService {
 
 ## The Dispatcher
 
-<code><pre>
-<?php
+<code><pre><?php
 require "descanse.php";
 require "user.php";
 Descanse::go();
 ?></pre></code>
+
+## Guidelines
+
+- Descanse creates routes automatically. Thus, UserProfileService becomes /userprofile/, and UserProfileService::getUserData() becomes GET /userprofile/userdata.
+- All methods within the Service class must be *static*.
+- All methods within the Service class must contain a *$context* argument, which contains an array with two keys: *request* (contains $_REQUEST data) and *args* (contains all of the slugs in the URL beyond the second slash, i.e. if the route is /userprofile/userdata/1/abc/3f, *args* will contain [0] => 1, [1] => abc, [2] => 3f).
+- All methods must start with *get*, *post*, *put* or *delete*.
+- If you wish to change the default settings of Descanse, you may do so using *Descanse::$settings* before *Descanse::go()*.
+
+## Settings
+
+- *auto_register*: true to search in all declared classes those whose name ends with "Service", false to allow manual registration. To do so, use the *Descanse::registerService($name)** method.
 
 ## License
 
