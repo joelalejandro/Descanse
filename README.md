@@ -22,7 +22,7 @@ PHP >= 5.3.0
 
 ## A Service Class example
 
-<code>
+<code><pre>
 <?php
 // user.php
 class UserService {
@@ -31,16 +31,17 @@ class UserService {
   }
 }
 ?>
-</code>
+</pre></code>
 
 ## The Dispatcher
 
+<code><pre>
 <?php
 require "descanse.php";
 require "user.php";
 
 Descanse::go();
-?>
+?></pre></code>
 
 ## License
 
