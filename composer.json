@@ -1,0 +1,24 @@
+{
+    "name": "joelalejandro/descanse",
+    "type": "library",
+    "description": "Super-simple routing for PHP",
+    "keywords": ["routing","simple","web service"],
+    "homepage": "http://github.com/joelalejandro/Descanse",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joel A. Villarreal Bertoldi",
+            "email": "hola@joelalejandro.com",
+            "homepage": "http://joelalejandro.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Descanse": "src"
+        }
+    }
+}
