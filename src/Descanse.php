@@ -1,5 +1,5 @@
 <?php
-namespace JoelAlejandroDescanse;
+namespace Descanse;
 
 class Descanse {
 
