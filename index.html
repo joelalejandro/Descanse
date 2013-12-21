@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Descanse by joelalejandro</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Descanse</h1>
+        <h2>A really really simple API framework for PHP.</h2>
+        <a href="https://github.com/joelalejandro/Descanse" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="descanse" class="anchor" href="#descanse"><span class="octicon octicon-link"></span></a>Descanse</h1>
+
+<p>A really really simple API framework for PHP.</p>
+
+<h2>
+<a name="the-name" class="anchor" href="#the-name"><span class="octicon octicon-link"></span></a>The name</h2>
+
+<p>"Descanse" is the Spanish translation for "rest".</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>PHP &gt;= 5.3.0</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<ol>
+<li>Add the .htaccess file included in this repository. This file redirects all incoming requests to a single dispatcher.</li>
+<li>Create a dispatcher file (i.e. index.php) that includes the Descanse core.</li>
+<li>Create a class that has the word "Service" as a suffix (UserService, SearchService, etc.).</li>
+<li>Create a method in that class with a name starting with get, post, put or delete (i.e. getUser, postUser, putUser, deleteUser, etc.). The method must return a PHP type, object or array.</li>
+<li>Include the Service class in the dispatcher (this is done automatically by default).</li>
+<li>Tell Descanse to run!</li>
+</ol><h2>
+<a name="a-service-class-example" class="anchor" href="#a-service-class-example"><span class="octicon octicon-link"></span></a>A Service Class example</h2>
+
+<p><code><pre>&lt;?php
+// user.php
+class UserService {
+  public static function getName($context) {
+    return array("first" =&gt; "Joel", "last" =&gt; "Villarreal");
+  }
+}
+?&gt;
+</pre></code></p>
+
+<h2>
+<a name="the-dispatcher" class="anchor" href="#the-dispatcher"><span class="octicon octicon-link"></span></a>The Dispatcher</h2>
+
+<p><code><pre>&lt;?php
+require "descanse.php";
+require "user.php";
+Descanse::go();
+?&gt;</pre></code></p>
+
+<h2>
+<a name="guidelines" class="anchor" href="#guidelines"><span class="octicon octicon-link"></span></a>Guidelines</h2>
+
+<ul>
+<li>Descanse creates routes automatically. Thus, UserProfileService becomes /userprofile/, and UserProfileService::getUserData() becomes GET /userprofile/userdata.</li>
+<li>All methods within the Service class must be <em>static</em>.</li>
+<li>All methods within the Service class must contain a <em>$context</em> argument, which contains an array with two keys: <em>request</em> (contains $_REQUEST data) and <em>args</em> (contains all of the slugs in the URL beyond the second slash, i.e. if the route is /userprofile/userdata/1/abc/3f, <em>args</em> will contain [0] =&gt; 1, [1] =&gt; abc, [2] =&gt; 3f).</li>
+<li>All methods must start with <em>get</em>, <em>post</em>, <em>put</em> or <em>delete</em>.</li>
+<li>If you wish to change the default settings of Descanse, you may do so using <em>Descanse::$settings</em> before <em>Descanse::go()</em>.</li>
+<li>The 'Accept' header defines the API method's output. If Accept is 'application/json', it'll automatically encode the data. <strong>More encoders are underway!</strong>
+</li>
+</ul><h2>
+<a name="settings" class="anchor" href="#settings"><span class="octicon octicon-link"></span></a>Settings</h2>
+
+<ul>
+<li>
+<em>auto_register</em>: true to search in all declared classes those whose name ends with "Service", false to allow manual registration. To do so, use the <em>Descanse::registerService($name)</em>* method.</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Descanse is licensed under the MIT License.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/joelalejandro/Descanse/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/joelalejandro/Descanse/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/joelalejandro/Descanse"></a> is maintained by <a href="https://github.com/joelalejandro">joelalejandro</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
